@@ -2,8 +2,8 @@
 {% block contents %}
     {% for blog in blogs %}
     <div class="blog">
-        <strong><div class="blog-title">{{blog.subject}}</div></strong>
-        <pre class="blog-body">{{blog.content}}</pre>
+        <strong><div class="blog-title">{{blog.subject | safe }}</div></strong>
+        <div class="blog-body">{{blog.content | safe }}</div>
     </div>
     <hr>
     {% endfor %}

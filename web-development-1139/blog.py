@@ -40,14 +40,26 @@ class NewPostHandler(Handler):
         subject=self.request.get("subject")
         content=self.request.get("content")
         if subject and content:
-            blog=Blog(subject=subject,content=content)
+            blog=Blog(subject=subject,content=content.replace('\n', '<br>'))
             blog.put()
             id=blog.key().id()
-            self.redirect('/'+str(id))
-
+            self.redirect('/blog/'+str(id))
         else:
             error="we need both a subject and content!"
             self.render_front(subject,content,error)
-        #self.render_front()
 
-app=webapp2.WSGIApplication([('/blog',MainPage),('/newpost',NewPostHandler)],debug=True)
+class PostPageHandler(Handler):
+    def get(self,id):
+        key = db.Key.from_path('Blog', int(id))
+        blog=db.get(key)
+
+        if not blog:
+            self.error(404)
+            return
+
+        self.render("permalink.html", blog=blog)
+
+
+app=webapp2.WSGIApplication([('/blog',MainPage),
+                             ('/newpost',NewPostHandler),
+                             ('/blog/([0-9]+)', PostPageHandler)],debug=True)

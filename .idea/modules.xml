@@ -2,6 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/../Python/.idea/Python.iml" filepath="$PROJECT_DIR$/../Python/.idea/Python.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../UR-HIVE/.idea/UR-HIVE.iml" filepath="$PROJECT_DIR$/../UR-HIVE/.idea/UR-HIVE.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/Web-Dev.iml" filepath="$PROJECT_DIR$/.idea/Web-Dev.iml" />
     </modules>
   </component>

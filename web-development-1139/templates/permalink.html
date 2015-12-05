@@ -1,0 +1,8 @@
+{% extends "blogbase.html" %}
+{% block contents %}
+    <div class="blog">
+        <strong><div class="blog-title">{{blog.subject | safe}}</div></strong>
+        <div class="blog-body">{{blog.content | safe}}</div>
+    </div>
+    <hr>
+{% endblock %}
